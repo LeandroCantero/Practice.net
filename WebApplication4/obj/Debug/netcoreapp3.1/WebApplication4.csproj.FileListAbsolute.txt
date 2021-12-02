@@ -26,3 +26,4 @@ C:\Users\lcantero\source\repos\WebApplication4\WebApplication4\bin\Debug\netcore
 C:\Users\lcantero\source\repos\WebApplication4\WebApplication4\obj\Debug\netcoreapp3.1\WebApplication4.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\lcantero\source\repos\WebApplication4\WebApplication4\obj\Debug\netcoreapp3.1\WebApplication4.csproj.CopyComplete
 C:\Users\lcantero\source\repos\WebApplication4\WebApplication4\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\lcantero\source\repos\WebApplication4\WebApplication4\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

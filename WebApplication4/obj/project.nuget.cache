@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "n7yTFe83UPHWysDSRipQTYHczHmtXNTVS4xbbFZ//ZHM0fR5akBzkJ8gBkLeVhmaNnjWxx9nRqMl9sH/PdaZZQ==",
+  "dgSpecHash": "+tmsMH7s1g08Qx2MBk3bAy7S6091R/guBZ+sITaOZYyX+W16xOmjJSglrvK4VltjR8rZz8ENDq8j7zrFhkvkmg==",
   "success": true,
   "projectFilePath": "C:\\Users\\lcantero\\source\\repos\\WebApplication4\\WebApplication4\\WebApplication4.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lcantero\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\lcantero\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\lcantero\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\lcantero\\.nuget\\packages\\swashbuckle.aspnetcore\\6.1.4\\swashbuckle.aspnetcore.6.1.4.nupkg.sha512",
     "C:\\Users\\lcantero\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.2.3\\swashbuckle.aspnetcore.annotations.6.2.3.nupkg.sha512",
     "C:\\Users\\lcantero\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",

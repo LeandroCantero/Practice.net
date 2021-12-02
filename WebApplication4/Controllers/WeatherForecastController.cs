@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Swashbuckle.AspNetCore.Annotations;
+using WebApplication4.Models;
 using WebApplication4.Models.Dtos;
 using WebApplication4.Services.Interfaces;
 
@@ -33,6 +37,20 @@ namespace WebApplication4.Controllers
         public ActionResult<WeatherForecastDTO> Get()
         {
             return Ok(_weatherForecast.GetDayAndMonth());
+        }
+
+        [Route("Geolocation")]
+        [HttpGet]
+        public ActionResult Geolocation()
+        {
+            return Ok(_weatherForecast.GetGeolocation());            
+        }
+
+        [Route("Weather")]
+        [HttpGet]
+        public async Task<ActionResult> Weather(double lat, double lon, string apiKey)
+        {
+            return null;
         }
     }
 }
