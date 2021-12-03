@@ -26,31 +26,44 @@ namespace WebApplication4.Services
             return forecast;
         }
 
-        public Geolocation GetGeolocation()
+        public Geolocation GetGeolocation(string ip)
         {
             this.client.BaseAddress = new Uri("http://ip-api.com/json/");
 
-            using (HttpResponseMessage response = client.GetAsync($"186.129.251.128?fields=status,message,country,countryCode,regionName,city,lat,lon,timezone,query").Result)
+            using (HttpResponseMessage response = client.GetAsync($"{ip}?fields=status,message,country,countryCode,regionName,city,lat,lon,timezone,query").Result)
             {
                 var responseContent = response.Content.ReadAsStringAsync().Result;
                 response.EnsureSuccessStatusCode();
                 var obj = JsonConvert.DeserializeObject<Geolocation>(responseContent);
-                Console.WriteLine(obj.query);
                 return obj;
             }
         }
 
-        public async Task<OpenWeather> GetWeather(double lat, double lon, string apiKey)
+        public OpenWeather GetWeather(float lat, float lon)
         {
-            client.BaseAddress = new Uri("https://api.openweathermap.org/data/2.5/");
+            this.client.BaseAddress = new Uri("https://api.openweathermap.org/data/2.5/");
 
-            using (HttpResponseMessage response = await client.GetAsync($"onecall?lat={lat}&lon={lon}&exclude=hourly,daily,minutely&appid={apiKey}"))
+            using (HttpResponseMessage response = client.GetAsync($"onecall?lat={lat}&lon={lon}& exclude=hourly,daily,minutely&appid={apiKey}").Result)
             {
                 var responseContent = response.Content.ReadAsStringAsync().Result;
-                response.EnsureSuccessStatusCode();
                 var obj = JsonConvert.DeserializeObject<OpenWeather>(responseContent);
                 return obj;
             }
+        }
+
+        public OpenWeather GetWeatherByIp(string ip)
+        {
+            this.client.BaseAddress = new Uri("https://api.openweathermap.org/data/2.5/");
+            var lat = this.GetGeolocation(ip).lat;
+            var lon = this.GetGeolocation(ip).lon;
+            
+
+            using (HttpResponseMessage response = client.GetAsync($"onecall?lat={lat}&lon={lon}& exclude=hourly,daily,minutely&appid={apiKey}").Result)
+            {
+                var responseContent = response.Content.ReadAsStringAsync().Result;
+                var obj = JsonConvert.DeserializeObject<OpenWeather>(responseContent);
+                return obj;
+            };
         }
     }
 }

@@ -10,7 +10,8 @@ namespace WebApplication4.Services.Interfaces
     public interface IWeatherForecast
     {
         WeatherForecastDTO GetDayAndMonth();
-        Task<OpenWeather> GetWeather(double lat, double lon, string apiKey);
-        Geolocation GetGeolocation();
+        OpenWeather GetWeather(float lat, float lon);
+        Geolocation GetGeolocation(string ip);
+        OpenWeather GetWeatherByIp (string ip);
     }
 }

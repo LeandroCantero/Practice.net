@@ -41,16 +41,23 @@ namespace WebApplication4.Controllers
 
         [Route("Geolocation")]
         [HttpGet]
-        public ActionResult Geolocation()
+        public ActionResult Geolocation(string ip)
         {
-            return Ok(_weatherForecast.GetGeolocation());            
+            return Ok(_weatherForecast.GetGeolocation(ip));            
         }
 
         [Route("Weather")]
         [HttpGet]
-        public async Task<ActionResult> Weather(double lat, double lon, string apiKey)
+        public ActionResult Weather(float lat, float lon)
         {
-            return null;
+            return Ok(_weatherForecast.GetWeather(lat, lon));
+        }
+
+        [Route("WeatherByIp")]
+        [HttpGet]
+        public ActionResult WeatherByIp(string ip)
+        {
+            return Ok(_weatherForecast.GetWeatherByIp(ip));
         }
     }
 }
