@@ -34,6 +34,14 @@ namespace WebApplication4
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
 
+            services.AddHttpClient("Geolocation", client =>
+            {
+                client.BaseAddress = new Uri("http://ip-api.com/json/");
+            });
+            services.AddHttpClient("OpenWeather", client =>
+            {
+                client.BaseAddress = new Uri("https://api.openweathermap.org/data/2.5/");
+            });
             services.AddScoped<IWeatherForecast, WeatherForecastService>();
             services.AddControllers();
             

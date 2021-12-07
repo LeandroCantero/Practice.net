@@ -2,7 +2,7 @@
 {
     public class OpenWeather
     {
-        public int lat { get; set; }
+        public float lat { get; set; }
         public float lon { get; set; }
         public string timezone { get; set; }
         public int timezone_offset { get; set; }

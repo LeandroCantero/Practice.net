@@ -14,7 +14,12 @@ namespace WebApplication4.Services
     {
         public WeatherForecastDTO forecast = new WeatherForecastDTO();
 
-        public HttpClient client = new HttpClient();
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public WeatherForecastService(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
 
         const string apiKey = "46314bde5ac1bbe1e85b0b5ec363c959";
 
@@ -28,7 +33,7 @@ namespace WebApplication4.Services
 
         public Geolocation GetGeolocation(string ip)
         {
-            this.client.BaseAddress = new Uri("http://ip-api.com/json/");
+            var client = _httpClientFactory.CreateClient("Geolocation");
 
             using (HttpResponseMessage response = client.GetAsync($"{ip}?fields=status,message,country,countryCode,regionName,city,lat,lon,timezone,query").Result)
             {
@@ -41,7 +46,7 @@ namespace WebApplication4.Services
 
         public OpenWeather GetWeather(float lat, float lon)
         {
-            this.client.BaseAddress = new Uri("https://api.openweathermap.org/data/2.5/");
+            var client = _httpClientFactory.CreateClient("OpenWeather");
 
             using (HttpResponseMessage response = client.GetAsync($"onecall?lat={lat}&lon={lon}& exclude=hourly,daily,minutely&appid={apiKey}").Result)
             {
@@ -53,9 +58,9 @@ namespace WebApplication4.Services
 
         public OpenWeather GetWeatherByIp(string ip)
         {
-            this.client.BaseAddress = new Uri("https://api.openweathermap.org/data/2.5/");
-            var lat = this.GetGeolocation(ip).lat;
-            var lon = this.GetGeolocation(ip).lon;
+            var client = _httpClientFactory.CreateClient("OpenWeather");
+            float lat = this.GetGeolocation(ip).lat;
+            float lon = this.GetGeolocation(ip).lon;
             
 
             using (HttpResponseMessage response = client.GetAsync($"onecall?lat={lat}&lon={lon}& exclude=hourly,daily,minutely&appid={apiKey}").Result)
