@@ -13,5 +13,8 @@ namespace WebApplication4.Services.Interfaces
         OpenWeather GetWeather(float lat, float lon);
         Geolocation GetGeolocation(string ip);
         OpenWeather GetWeatherByIp (string ip);
+        Object GetStudents();
+        Object GetStudentsById(int id);
+        void SaveStudent(string name, string lastName, int courseId);
     }
 }

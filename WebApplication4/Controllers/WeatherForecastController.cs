@@ -59,5 +59,27 @@ namespace WebApplication4.Controllers
         {
             return Ok(_weatherForecast.GetWeatherByIp(ip));
         }
+
+        [Route("GetStudents")]
+        [HttpGet]
+        public ActionResult GetStudents()
+        {
+            return Ok(_weatherForecast.GetStudents());
+        }
+
+        [Route("GetStudentsById")]
+        [HttpGet]
+        public ActionResult GetStudentsById(int id)
+        {
+            return Ok(_weatherForecast.GetStudentsById(id));
+        }
+
+        [Route("SaveStudent")]
+        [HttpPost]
+        public ActionResult SaveStudent(string name, string lastName, int courseId)
+        {
+            _weatherForecast.SaveStudent(name, lastName, courseId);
+            return Ok(_weatherForecast.GetStudents());
+        }
     }
 }

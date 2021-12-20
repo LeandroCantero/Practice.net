@@ -13,6 +13,7 @@ namespace WebApplication4.Services
     public class WeatherForecastService : IWeatherForecast
     {
         public WeatherForecastDTO forecast = new WeatherForecastDTO();
+        ServiceReference1.StudentServiceClient oClient = new ServiceReference1.StudentServiceClient();
 
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -69,6 +70,21 @@ namespace WebApplication4.Services
                 var obj = JsonConvert.DeserializeObject<OpenWeather>(responseContent);
                 return obj;
             };
+        }
+
+        public Object GetStudents()
+        {
+            return oClient.GetStudents();
+        }
+
+        public Object GetStudentsById(int id)
+        {
+            return oClient.GetStudentById(id);
+        }
+
+        public void SaveStudent(string name, string lastName, int courseId)
+        {
+            oClient.SaveStudent(name, lastName, courseId);
         }
     }
 }
